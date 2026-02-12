@@ -65,6 +65,11 @@ Each run produces:
 - No links outside Microsoft Learn
 - No blog links in final output
 
+## Quick start
+
+Create a Microsoft Foundry Agent using `gpt-5.2-chat`, connect the
+Microsoft Learn MCP Server, paste the agent prompt, and run on demand.
+
 ## Example output (excerpt)
 
 ```text
