@@ -1,5 +1,6 @@
 
-#Enterprise AI Release Scouting Agent
+Enterprise AI Release Scouting Agent
+
 Overview
 Enterprise AI Release Scouting Agent helps enterprise architects and partners stay current on Microsoft AI platform updates without marketing noise. The agent treats Microsoft Foundry blog posts as signals of change, then grounds every output in authoritative Microsoft Learn documentation before publishing.
 The result is a concise, publish-ready LinkedIn post that is factual, verifiable, and useful for enterprise decision-makers. Capabilities without authoritative Microsoft Learn documentation are intentionally excluded.
