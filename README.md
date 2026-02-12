@@ -1,84 +1,71 @@
-```md
 # Enterprise AI Release Scouting Agent
+
+**Track:** Agents League / TechConnect – Track 2 (Reasoning Agents)  
+**Focus:** Reasoning, verification, and trust over automation volume
 
 ## Overview
 
-Enterprise AI Release Scouting Agent helps enterprise architects and partners stay current on Microsoft AI platform updates without marketing noise. The agent treats Microsoft Foundry blog posts as **signals of change**, then grounds every output in **authoritative Microsoft Learn documentation** before publishing.
+The **Enterprise AI Release Scouting Agent** helps enterprise architects and partners stay current on Microsoft AI platform updates without marketing noise.
 
-The result is a concise, publish-ready LinkedIn post that is factual, verifiable, and useful for enterprise decision-makers. Capabilities without authoritative Microsoft Learn documentation are intentionally excluded.
+It treats Microsoft Foundry blog posts as **signals of change**, then **verifies every capability** against authoritative **Microsoft Learn** documentation before producing output.
 
-This project was built for **Agents League / TechConnect – Track 2 (Reasoning Agents)**, with a deliberate focus on reasoning, verification, and trust over automation volume.
+The result is a concise, publish-ready **LinkedIn post** that is factual, verifiable, and relevant for enterprise decision-makers. Any capability **without suitable Microsoft Learn documentation is intentionally excluded**.
 
----
+## What it solves
 
-## Problem
+Enterprise audiences are overloaded by AI announcements across blogs and social channels.
 
-Enterprise audiences face an overload of AI announcements across blogs and social channels:
+This agent reduces noise by:
+- avoiding announcement-only links
+- excluding features without enterprise-ready documentation
+- focusing on what matters for architects and partners
 
-- Marketing posts that link to announcements rather than documentation
-- Features shared before enterprise-ready guidance exists
-- Difficulty assessing what actually matters for architects and partners
+## How it works
 
-This agent addresses these issues by enforcing a verification-first workflow.
+**Core principle:** Blog = signal. Learn = source of truth.
 
----
-
-## Agent Design
-
-### Core Principle
-
-**Blog = signal. Learn = source of truth.**
-
-Microsoft Foundry blog posts are used only to detect new or updated capabilities. Final outputs always link to Microsoft Learn documentation.
-
-### Reasoning Workflow
-
-1. **Detect** – Identify new or updated capabilities from the latest Microsoft Foundry blog posts  
-2. **Verify** – Use the Microsoft Learn MCP Server to search and fetch authoritative Microsoft Learn documentation  
-3. **Evaluate** – Assess relevance for enterprise architects and partners  
-4. **Filter** – Exclude any capability without suitable Microsoft Learn documentation  
-5. **Publish** – Generate a concise, publish-ready LinkedIn post with Microsoft Learn links only  
-
-This workflow demonstrates multi-step reasoning, verification, and intentional exclusion.
-
----
+Reasoning workflow:
+1. **Detect** – Identify new or updated capabilities from recent Microsoft Foundry blog posts.
+2. **Verify** – Search and retrieve authoritative documentation using the Microsoft Learn MCP Server.
+3. **Evaluate** – Assess relevance for enterprise architects and partners.
+4. **Filter** – Exclude any capability without suitable Microsoft Learn documentation.
+5. **Publish** – Generate a concise LinkedIn post with Microsoft Learn links only.
 
 ## Architecture
 
-- **Agent Runtime:** Microsoft Foundry Agent Service  
-- **Model:** `gpt-5.2-chat`  
-- **Grounding:** Microsoft Learn MCP Server  
+- **Runtime:** Microsoft Foundry Agent Service
+- **Model:** `gpt-5.2-chat`
+- **Grounding:** Microsoft Learn MCP Server
+- **Outputs:**
+  - LinkedIn post text (ready to publish)
+  - Microsoft Learn links with short descriptions
+  - Optional AI image prompt (text only)
 
-**Outputs:**
-- LinkedIn post text (ready to publish)
-- Microsoft Learn links with short descriptions
-- Optional AI image prompt (text only)
+### Model choice
 
-### Model Choice Rationale
+`gpt-5.2-chat` is used for strong reasoning and predictable enterprise output.
 
-`gpt-5.2-chat` was selected for its strong reasoning, deterministic behavior, and enterprise alignment. Sampling parameters such as temperature are not supported by this model; consistency is achieved through strict prompt constraints and authoritative grounding.
+This model does not support temperature-based sampling controls. Consistency is achieved through:
+- strict prompt constraints
+- explicit reasoning steps
+- authoritative grounding through Microsoft Learn
 
----
-
-## Output Format
+## Output format
 
 Each run produces:
-
-- **Headline** – Clear, factual hook  
-- **Narrative paragraphs** – Why the capability matters for enterprise adoption  
-- **Learn more** – 2–3 Microsoft Learn links with short descriptions  
+- **Headline** – Clear factual hook
+- **Narrative** – Short paragraphs explaining enterprise relevance
+- **Learn more** – 2–3 Microsoft Learn links with short descriptions
 - **Optional** – AI image prompt (text only)
 
-### Constraints Enforced
+### Hard constraints
 
-- No speculation or inferred features  
-- No marketing language  
-- No links outside Microsoft Learn  
-- No blog links in final output  
+- No speculation or inferred features
+- No marketing language
+- No links outside Microsoft Learn
+- No blog links in final output
 
----
-
-## Example Output (Excerpt)
+## Example output (excerpt)
 
 ```text
 Headline: New capabilities for building governed AI agents in Microsoft Foundry
